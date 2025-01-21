@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Yash Bhakhar | Full Stack Developer Portfolio",
   description: "Full Stack Developer specializing in modern web technologies. Explore my projects, skills, and professional experience in web development.",
-  metadataBase: new URL('https://your-domain.com'), // Replace with your actual domain
+  metadataBase: new URL('https://yash-bhakhar.netlify.app'), // Replace with your actual domain
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Yash Bhakhar | Full Stack Developer Portfolio',
     description: 'Full Stack Developer specializing in modern web technologies. Explore my projects, skills, and professional experience in web development.',
-    url: 'https://your-domain.com', // Replace with your actual domain
+    url: 'https://yash-bhakhar.netlify.app', // Replace with your actual domain
     siteName: 'Yash Bhakhar Portfolio',
     images: [
       {
