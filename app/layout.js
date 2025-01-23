@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Favicon from "@/public/favicon-removebg-preview.png";
+import Favicon from "@/public/favicon.png";
 import "./globals.css";
 
 const geistSans = Geist({
