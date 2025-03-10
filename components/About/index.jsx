@@ -55,7 +55,7 @@ const About = () => {
                   <p>
                     What truly excites me is the{" "}
                     <span className="text-green-400">React ecosystem</span>.
-                    I've immersed myself in ReactJS, NextJS, and React Native,
+                    I've immersed myself in ReactJS, NodeJS, NextJS, and React Native,
                     building everything from responsive web applications to
                     seamless mobile experiences. Each project has been a
                     stepping stone in mastering these technologies.

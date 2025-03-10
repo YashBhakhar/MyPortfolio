@@ -25,7 +25,7 @@ const Dashboard = ({ handleDownloadCV, handleLinkdin, handleEmail }) => {
 
             <p className="text-gray-400 text-lg">
               Passionate about crafting exceptional web and mobile experiences
-              using React ecosystem. Specializing in ReactJS, NextJS, and React
+              using React ecosystem. Specializing in ReactJS, NodeJS, NextJS, and React
               Native, I transform complex requirements into elegant,
               user-centric solutions that drive business success.
             </p>

@@ -22,7 +22,7 @@ export default function Home() {
   const handleDownloadCV = async () => {
     try {
       const link = document.createElement("a");
-      link.href = "./yash-bhakhar-2024.pdf";
+      link.href = "./yash-bhakhar.pdf";
       link.download = "resume.pdf"; // Name for downloaded file
       document.body.appendChild(link);
       link.click();
