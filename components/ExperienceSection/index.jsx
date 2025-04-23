@@ -113,7 +113,7 @@ const ExperienceSection = ({ handleRedirect }) => {
               <h3 className="text-xl font-bold text-white">
                 Software Engineer - As a ReactJS Developer!
               </h3>
-              <span className="text-gray-400 text-sm">Jan. 2023 - Current</span>
+              <span className="text-gray-400 text-sm">Jan. 2023 - Mar. 2025</span>
             </div>
             <p className="text-gray-300">
               Throughout my Coding journey here, I have completed over{" "}

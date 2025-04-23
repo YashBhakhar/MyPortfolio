@@ -19,7 +19,7 @@ const SkillsSection = () => {
     { name: "Bootstrap", category: "Frontend", icon: "/bs.png", color: "#7952b3" },
     { name: "NodeJS", category: "Backend", icon: "/node.png", color: "#7952b3" },
     { name: "Git", category: "DevOps", icon: "/git.png", color: "#7952b3" },
-    { name: "Postman API", category: "Software", icon: "/postman.png", color: "#7952b3" },
+    { name: "Postman", category: "Software", icon: "/postman.png", color: "#7952b3" },
     { name: "VS. Code", category: "Software", icon: "/vscode.png", color: "#7952b3" },
   ];
 
@@ -86,8 +86,8 @@ const SkillsSection = () => {
                           src={skill.icon}
                           alt={skill.name}
                           className="inset-0 object-cover"
-                          width={50}
-                          height={50}
+                          width={40}
+                          height={40}
                         />
                       </span>
                       <span className="text-sm text-gray-300">

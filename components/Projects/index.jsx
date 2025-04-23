@@ -149,11 +149,11 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-                    <p className="text-gray-400 text-sm py-4">
-                      {project.description.map(d=>(
-                        <p>• {d}</p>
+                    <div className="text-gray-400 text-sm py-4">
+                      {project.description.map((d, i)=>(
+                        <p key={i}>• {d}</p>
                       ))}
-                    </p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
