@@ -5,9 +5,14 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <section id="about" className="min-h-[96vh] bg-black py-20 px-4 border-b border-[#2c3437] overflow-hidden">
+    <section
+      id="about"
+      className="min-h-[96vh] bg-black py-20 px-4 border-b border-[#2c3437] overflow-hidden"
+    >
       <div className="container mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-12 relative left-title">About Me</h1>
+        <h1 className="text-4xl font-bold text-white mb-12 relative left-title">
+          About Me
+        </h1>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Left Column - Image */}
@@ -55,18 +60,21 @@ const About = () => {
                   <p>
                     What truly excites me is the{" "}
                     <span className="text-green-400">React ecosystem</span>.
-                    I've immersed myself in ReactJS, NodeJS, NextJS, and React Native,
-                    building everything from responsive web applications to
-                    seamless mobile experiences. Each project has been a
-                    stepping stone in mastering these technologies.
+                    I've immersed myself in the full stack - from ReactJS/NextJS
+                    frontends to NodeJS backends and React Native mobile
+                    development, building responsive applications that solve
+                    real business problems while constantly refining my
+                    technical expertise.
                   </p>
 
                   <p>
                     I believe in writing clean, maintainable code and creating
                     intuitive user interfaces that make a difference. Whether
-                    it's optimizing performance, implementing complex state
-                    management, or ensuring cross-platform compatibility, I'm
-                    always up for the challenge.
+                    optimizing performance, implementing complex state
+                    management, or ensuring seamless deployment through GitHub
+                    and Netlify, I approach every challenge with both technical
+                    precision and a user-centered mindset that delivers
+                    meaningful results. 
                   </p>
                 </div>
               </CardContent>

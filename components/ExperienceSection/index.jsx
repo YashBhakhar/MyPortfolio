@@ -98,6 +98,34 @@ const ExperienceSection = ({ handleRedirect }) => {
       </div>
 
       <div className="space-y-8">
+      <Card className="bg-zinc-900/50 border border-green-500/20 hover:border-green-500/50 transition-colors duration-300 backdrop-blur-sm">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src="/gamostar.png"
+                alt="École Numérique"
+                className="h-8"
+                width={32}
+                height={32}
+              />
+            </div>
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-white">
+                Fullstack Developer
+              </h3>
+              <span className="text-gray-400 text-sm">Mar. 2025 - Current</span>
+            </div>
+            <p className="text-gray-300">
+              Throughout my Coding journey here, I have completed over{" "}
+              <span className="text-green-500">1+ projects</span> using
+              <span className="text-green-500"> ReactJS, Node.js</span> and{" "}
+              <span className="text-green-500">NextJS</span> focused on
+              designing and developing
+              <span className="text-green-500"> User Friendly</span>{" "}
+              applications.
+            </p>
+          </CardContent>
+        </Card>
         <Card className="bg-zinc-900/50 border border-green-500/20 hover:border-green-500/50 transition-colors duration-300 backdrop-blur-sm">
           <CardContent className="pt-6">
             <div className="flex items-center gap-4 mb-4">
@@ -146,7 +174,7 @@ const ExperienceSection = ({ handleRedirect }) => {
               </span>
             </div>
             <p className="text-gray-300">
-              Throughout my Training journey , I have completed over{" "}
+              Throughout my Training and Coading journey , I have completed over{" "}
               <span className="text-green-500">2+ projects</span> using
               <span className="text-green-500"> ReactJS</span> focused on
               learning and developing
