@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-// init resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from "nodemailer";
 
 // simple in-memory rate limit store
 const rateLimitMap = new Map();
@@ -43,9 +40,20 @@ export async function POST(req) {
       );
     }
 
+    // create transporter
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST, // e.g., smtp.gmail.com
+      port: process.env.SMTP_PORT, // 465 for SSL, 587 for TLS
+      secure: process.env.SMTP_SECURE === "true", // true if using port 465
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
     // send mail
-    await resend.emails.send({
-      from: "noreply@yourdomain.com", // recommended: use custom domain
+    await transporter.sendMail({
+      from: `"${name}" <${process.env.SMTP_USER}>`,
       to: process.env.TO_EMAIL,
       subject: "New Contact Form Submission",
       text: `
