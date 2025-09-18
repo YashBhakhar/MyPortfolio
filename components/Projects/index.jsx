@@ -1,164 +1,159 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+"use client";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import ContactButton from "../common/AnimatedButton";
+import { useIsLaptop, useIsMobile } from "@/customHook/screen-hooks";
+import { projects } from "@/const/project";
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "Diamond Connect",
-      description: [
-        "Baseball Scheduler: Developed event scheduling and score management",
-        "Signup Flow: Designed and implemented a multi-page signup process",
-        "Code Optimization: Replaced class components with functional components",
-        "Data Visualization: Integrated charts, resolved bugs, and improved code quality",
-      ],
-      image: "./dimondconnect.png",
-      tech: ["React.js", "Redux Toolkit", "Simple React Validator"],
-      techColors: {
-        "React.js": "bg-[#1E282E] text-[#90CDF4]",
-        "Redux Toolkit": "bg-my-custom-red text-[#fc3535]",
-        "Simple React Validator": "bg-my-custom-pink text-my-custom-pink-text",
-      },
-      link: "https://www.diamondconnect.com/",
-    },
-    {
-      title: "Sundance Festival",
-      description: [
-        "Ticket & Passes: Developed add ticket and pass module for movies.",
-        "Movie list: can watch rented movie",
-        "Sponsor Module: Sponsors for organizing Events",
-        "Code Optimization: Replaced class components with functional components",
-      ],
-      image: "./sundance.png",
-      tech: ["React.js", "Fullcalendar", "Socket.IO"],
-      techColors: {
-        "React.js": "bg-[#1E282E] text-[#90CDF4]",
-        Fullcalendar: "bg-my-custom-red text-[#fc3535]",
-        "Socket.IO": "bg-my-custom-green text-my-custom-green-text",
-      },
-      link: "https://festival.sundance.org/",
-    },
-    {
-      title: "Ampliteach",
-      description: [
-        "Developed online platform for musical instrument classes",
-        "Implemented lesson scheduler using FullCalendar library",
-        "Created role-based access control and user permissions",
-        "Built embeddable widget and common signup form for integration",
-      ],
-      image: "./ampliteach.png",
-      tech: ["MUI", "FullCalendar", "React Hook Form", "Redux"],
-      techColors: {
-        MUI: "bg-[#E3A5BA] text-[#2F2428]",
-        FullCalendar: "bg-my-custom-red text-[#fc3535] ",
-        "React Hook Form": "bg-[#1E282E] text-[#90CDF4]",
-        Redux: "text-my-custom-orange-text bg-my-custom-orange",
-      },
-      link: "https://www.ampliteach.com/login",
-    },
-    {
-      title: "Superworks",
-      description: [
-        "Built attendance module for employee records and modification requests",
-        "Developed visitor module for tracking external company visitors",
-        "Implemented plan selection module for modular company subscriptions",
-      ],
-      image: "./superwork.png",
-      tech: ["React.js", "Custome Component"],
-      techColors: {
-        "React.js": "bg-[#1E282E] text-[#90CDF4]",
-        "Custome Component": "bg-[#2F291E] text-[#FBD38D]",
-      },
-      link: "https://hrms.superworks.com/",
-    },
-    {
-      title: "Jainam",
-      description: [
-        "Developed signup and verification module",
-        "Integrated analytics and event tracking with Mixpanel",
-        "Implemented document verification through Hyperverge API",
-      ],
-      image: "./jainam.png",
-      tech: ["Next.js", "Zustand", "Tailwind", "Tankstack"],
-      techColors: {
-        "Next.js": "bg-[#1E282E] text-[#90CDF4]",
-        Zustand: "bg-my-custom-red text-[#fc3535]",
-        Tailwind: "bg-my-custom-pink text-my-custom-pink-text",
-        Tankstack: "bg-[#2F291E] text-[#FBD38D]",
-      },
-      link: "https://signup.jainam.in/",
-    },
-    {
-      title: "IMS (Internal System Management)",
-      description: [
-        "Developed resource allocation system for PCs, mice, and inventory",
-        "Built the project from scratch, utilizing various UI and form libraries",
-        "Implemented tracking for inventory levels and resource allocation",
-        "Utilized Rematch for efficient state management",
-      ],
-      image: "./ims.png",
-      tech: ["React.js", "Rematch", "Ant Design"],
-      techColors: {
-        "React.js": "bg-[#1E282E] text-[#90CDF4]",
-        Rematch: "bg-my-custom-red text-[#fc3535]",
-        "Ant Design": "bg-my-custom-pink text-my-custom-pink-text",
-      },
-      link: "https://imsdev.artoon.in/",
-    },
-  ];
+const textContent = ["Featured projects"];
+
+const Projects = ({ laptop, tab, mobile }) => {
+  const containerRef = useRef(null);
+  const ref = useRef(null);
+
+  const { scrollYProgress: scrollProgress } = useScroll({
+    target: ref,
+    offset: ["0.5 1", "1 0.8"],
+  });
+
+  const smoothProgress = useSpring(scrollProgress, {
+    stiffness: 50,
+    damping: 25,
+    mass: 1,
+  });
 
   return (
-    <div id="projects" className="w-full bg-black text-white py-16 overflow-hidden border-b border-[#2c3437]">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-4 relative left-title">Projects</h2>
-        <p className="text-gray-400 mb-4">
-          Here's some of my projects that I have worked on.
-        </p>
+    <div
+      className=" text-white min-h-screen mt-[70px] max-main:mt-[80px] max-lg:mt-[60px] max-md:mt-[40px] mb-[160px] max-main:mb-[140px] max-lg:mb-[120px] max-md:mb-[100px] main-wrapper"
+      id="projects"
+    >
+      <div ref={containerRef} className="relative flex max-lg:flex-col">
+        <div className="w-[40%] max-lg:w-full max-lg:relative sticky left-0 top-0 pt-[90px] max-main:pt-[60px] self-start">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-mobile:px-[15px]"
+          >
+            <div>
+              <div ref={ref} className="mx-auto">
+                {textContent.map((para, pIdx) => {
+                  const words = para.split("");
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="bg-zinc-950 border-zinc-800 overflow-hidden group"
-            >
-              <CardContent className="p-0">
-                <div className="grid gap-4">
-                  <div className="overflow-hidden">
-                    <img
+                  return (
+                    <motion.p
+                      key={pIdx}
+                      className="text-[70px] max-md:text-[44px] font-medium leading-[normal] max-md:max-w-[205px] max-w-[350px] font-medium text-white whitespace-pre-wrap"
+                    >
+                      {words.map((word, i) => {
+                        const globalIndex = pIdx * 100 + i; // unique per paragraph
+                        const start =
+                          globalIndex /
+                          (words.length * textContent.length * 1.5);
+                        const end = Math.min(
+                          (globalIndex + 3) /
+                            (words.length * textContent.length * 1.5),
+                          1
+                        );
+
+                        const opacity = useTransform(
+                          smoothProgress,
+                          [start, end],
+                          [0.05, 1]
+                        );
+
+                        return (
+                          <motion.span
+                            key={i}
+                            style={{ opacity }}
+                            className="inline-block leading-[normal]"
+                          >
+                            {word}
+                          </motion.span>
+                        );
+                      })}
+                    </motion.p>
+                  );
+                })}
+              </div>
+
+              <motion.p
+                className="text-[#ACACAC] text-[22px] max-lg:text-lg mt-[25px] max-lg:max-w-[350px] max-w-[450px] leading-relaxed"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Explore a selection of projects blending creativity with
+                practical design
+              </motion.p>
+            </div>
+
+            <ContactButton
+              className="mt-[48px] max-md:mt-[40px]"
+              text="All Works"
+              textHidden={false}
+              href="https://github.com/YashBhakhar"
+            />
+          </motion.div>
+        </div>
+        <div className="w-[60%] max-lg:w-full pt-[90px] px-[15px] max-main:pt-[60px] relative">
+          <div className="space-y-[110px] max-lg:space-y-[70px]">
+            {projects.map((project, index) => {
+              const ref = useRef(null);
+
+              // scroll for this specific card
+              const { scrollYProgress } = useScroll({
+                target: ref,
+                offset: ["start end", "end start"], // when card enters/leaves viewport
+              });
+
+              // map scroll progress (0→1) into Y transform
+              const y = useTransform(
+                scrollYProgress,
+                [0, 1],
+                [mobile ? -100 : tab ? -120 : laptop ? -230 : -160, 50] // adjust range for depth
+              );
+
+              return (
+                <div
+                  key={project.id}
+                  ref={ref}
+                  className="relative max-mobile:mb-[60px]"
+                >
+                  {/* Project image */}
+                  <div className="rounded-[50px] max-mobile:rounded-[38px] relative max-lg:max-w-none max-mobile:h-[345px] max-lg:h-[600px] max-main:max-w-[758px] max-main:h-[760px] h-[930px] max-w-[1003px] w-full overflow-hidden max-mobile:mb-[14px] mb-[24px] bg-gray-800">
+                    <motion.img
                       src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      style={{ y }}
+                      className={` w-full max-mobile:h-[420px] max-lg:h-[850px] max-main:h-[860px] h-[1116px] will-change-transform transform-gpu bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center`}
                     />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                      <ExternalLink
-                      onClick={()=>window.open(project.link, "_blank", "noopener noreferrer")}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity text-white cursor-pointer"
-                        size={20}
-                      />
-                    </div>
-                    <div className="flex flex-wrap gap-2 border-b-[#2c3437] border-b pb-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className={`px-3 py-1 rounded text-xs font-bold ${project.techColors[tech]}`}
+                    <div className="flex flex-wrap absolute bottom-0 left-0 max-md:gap-[10px] gap-[14px] max-mobile:p-[30px] p-10">
+                      {project.tags.map((tag, tagIndex) => (
+                        <motion.span
+                          key={tagIndex}
+                          className="px-3 max-md:h-[32px] max-md:text-sm h-[36px] bg-[#161616] rounded-full inline-flex justify-center items-center text-[#fff]"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: tagIndex * 0.1 }}
                         >
-                          {tech}
-                        </span>
+                          {tag}
+                        </motion.span>
                       ))}
                     </div>
-                    <div className="text-gray-400 text-sm py-4">
-                      {project.description.map((d, i)=>(
-                        <p key={i}>• {d}</p>
-                      ))}
-                    </div>
+                  </div>
+                  {/* Project details */}
+                  <div className="px-10">
+                    <p className="max-md:text-[22px] text-[30px] text-[#ACACAC]">
+                      <span className="text-white font-medium">
+                        {project.title}
+                      </span>
+                      {project.description}
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
