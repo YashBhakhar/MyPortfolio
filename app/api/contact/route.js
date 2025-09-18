@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import getConfig from "next/config";
-const { serverRuntimeConfig } = getConfig();
 
 // simple in-memory rate limit store
 const rateLimitMap = new Map();
@@ -44,12 +42,12 @@ export async function POST(req) {
 
     // create transporter
     const transporter = nodemailer.createTransport({
-      host: serverRuntimeConfig.SMTP_HOST,
-      port: serverRuntimeConfig.SMTP_PORT,
-      secure: serverRuntimeConfig.SMTP_SECURE === "true",
+      host: process.env.SMTP_HOST, // e.g., smtp.gmail.com
+      port: process.env.SMTP_PORT, // 465 for SSL, 587 for TLS
+      secure: process.env.SMTP_SECURE === "true", // true if using port 465
       auth: {
-        user: serverRuntimeConfig.SMTP_USER,
-        pass: serverRuntimeConfig.SMTP_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
