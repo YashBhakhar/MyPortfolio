@@ -210,7 +210,8 @@
 }
 
 .main_section_height {
-  height: calc(100% - 16rem);
+  height: 100%;
+  padding-block: 170px;
 
   @media (max-width: 1201px) {
     height: auto;
