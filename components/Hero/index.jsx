@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     <div
-      className="main-wrapper h-screen max-w-[1770px] max-lg:h-auto pt-10 bg-background text-foreground relative"
+      className="main-wrapper max-w-[1770px] max-lg:h-auto pt-10 bg-background text-foreground relative"
       id="intro"
     >
       <Header />
